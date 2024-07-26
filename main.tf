@@ -3,7 +3,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "example" {
-  name     = "demo_practice"
+  name     = "demo"
   location = "eastus"
 }
 
