@@ -30,19 +30,4 @@ jobs:
         ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       run: terraform apply -auto-approve
 
-  upload:
-    needs: terraform
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Upload File to Azure Storage
-      uses: azure/azure-cli-action@v1
-      with:
-        azcliversion: 2.37.0
-        inlineScript: |
-          az storage blob upload --container-name my-container --file path/to/local/file.txt --name file.txt --hellodemo examplestoracc --account-key ${{ secrets.AZURE_STORAGE_KEY }}
-      env:
-        AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
+  
